@@ -28,7 +28,7 @@ class Product
   private
   def add_to_products
     if self.class.products.any? { |product| product.title == title }
-      raise DuplicateProductError, "#{title} already exists."
+      raise DuplicateProductError, "'#{title}' already exists."
     end
     self.class.products << self
   end
