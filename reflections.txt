@@ -1,0 +1,25 @@
+1. How long did you spend working on this project?
+~ 2 hours
+
+2. What was the most rewarding challenge you conquered?
+Trying to figure out why `attr_writer` doesn't allow to assign data inside the class
+```ruby
+class X
+  attr_writer :x
+  def initialize(x)
+    @x = x
+  end
+  def change
+    # this treats x as a local variable, not instance variale
+    # still not sure why, my understanding is attr_writer creates a method, in this case , `x=`
+    x = 1000 
+  end
+end
+```
+
+3. What two additional features did you build? Why?
+    1. Return a cloned copy in the `all` method, so callers won't accidentally change data in the class variables.
+    2. Isolate class variable (customers, products, etc) into a method to make the code more changeable if needed.
+
+4. Where do you still have room to grow?
+Think through dependencies if the interaction gets more complicated
