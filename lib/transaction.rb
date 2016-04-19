@@ -17,11 +17,11 @@ class Transaction
   end
 
   def self.all
-    @@transactions.clone
+    transactions.clone
   end
 
   def self.find(id)
-    @@transactions[id-1]
+    transactions[id-1]
   end
 
   private
@@ -30,7 +30,12 @@ class Transaction
   end
 
   def add_to_transactions
-    @@transactions << self
+    self.class.transactions << self
+  end
+
+  private_class_method
+  def self.transactions
+    @@transactions
   end
 
 end

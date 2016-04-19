@@ -32,10 +32,11 @@ class Product
 
   private
   def add_to_products
-    if self.class.products.any? { |product| product.title == title }
+    products = self.class.products
+    if products.any? { |product| product.title == title }
       raise DuplicateProductError, "'#{title}' already exists."
     end
-    self.class.products << self
+    products << self
   end
 
   private_class_method

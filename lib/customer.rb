@@ -23,10 +23,11 @@ class Customer
 
   private
   def add_to_customers
-    if self.class.customers.any? { |customer| customer.name == name }
+    customers = self.class.customers
+    if customers.any? { |customer| customer.name == name }
       raise DuplicateCustomerError, "'#{name}' already exists."
     end
-    self.class.customers << self
+    customers << self
   end
 
   private_class_method
