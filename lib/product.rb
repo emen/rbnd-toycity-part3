@@ -13,6 +13,11 @@ class Product
     stock && stock > 0
   end
 
+  def decrease_stock
+    raise OutOfStockError, "'#{title}' is out of stock" if stock <= 0
+    @stock -= 1
+  end
+
   def self.all
     products.clone
   end

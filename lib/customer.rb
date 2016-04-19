@@ -9,6 +9,10 @@ class Customer
     add_to_customers
   end
 
+  def purchase(product)
+    Transaction.new(self, product)
+  end
+
   def self.all
     customers.clone
   end
@@ -16,7 +20,6 @@ class Customer
   def self.find_by_name(name)
     customers.find { |customer| customer.name == name }
   end
-
 
   private
   def add_to_customers
